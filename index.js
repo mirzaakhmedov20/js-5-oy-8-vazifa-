@@ -50,24 +50,91 @@
 //       console.log(err);
 //     });
 // });
+// document.addEventListener("DOMContentLoaded", () => {
+//   document.querySelector("form").onsubmit = () => {
+//     const base = document.querySelector("#local_currency").value;
+//     fetch(`https://api.exchangerate.host/latest?/source=ecb${base}`)
+//       .then((response) => response.json())
+//       .then((data) => {
+//         const amount = document.querySelector("#amount").value;
+//         const foreignCurrency =
+//           document.querySelector("#foreign_currency").value;
+//         const rate = data.rates[foreignCurrency];
+//         function convert() {
+//           return amount * rate;
+//         }
+//         document.querySelector(
+//           "#result"
+//         ).innerHTML = `${amount} ${base.toUpperCase()} equal to ${foreignCurrency} ${convert().toFixed(
+//           4
+//         )}`;
+//       });
+//   };
+// });
+// document.addEventListener("DOMContentLoaded", () => {
+//   document.querySelector("form").onsubmit = () => {
+//     const base = document.querySelector("#local_currency").ariaValueMax;
+//     fetch(`https://currency-conversion-and-exchange-rates.p.rapidapi.com/latest${base}`,{
+//       method: 'GET',
+//       headers: {
+//         'X-RapidAPI-Key': '0caaa2d943mshd73e0e4af129428p13062bjsn9351c7998dfd',
+//         'X-RapidAPI-Host': 'currency-conversion-and-exchange-rates.p.rapidapi.com'
+//       }
+//     })
+//       .then((response) => response.json())
+//       .then((data) => {
+//         const amount = document.querySelector("#amount").value;
+//         const foreignCurrency =
+//           document.querySelector("#foreign_currency").value;
+//         const rate = data.rates[foreignCurrency];
+//         function convert() {
+//           return amount * rate;
+//         }
+//         document.querySelector(
+//           "#result"
+//         ).innerHTML = `${amount} ${base.toUpperCase()} equal to ${foreignCurrency} ${convert().toFixed(
+//           4
+//         )}`;
+//       });
+//   };
+// });
 document.addEventListener("DOMContentLoaded", () => {
-  document.querySelector("form").onsubmit = () => {
-    const base = document.querySelector("#local_currency").ariaValueMax;
-    fetch(`https://api.exchangerate.host/latest?/source=ecb${base}`)
+  document.querySelector("form").onsubmit = (event) => {
+    event.preventDefault(); // Prevent form submission
+
+    const base = document.querySelector("#local_currency").value;
+    fetch(
+      `https://currency-conversion-and-exchange-rates.p.rapidapi.com/latest?base=${base}`,
+      {
+        method: "GET",
+        headers: {
+          "X-RapidAPI-Key":
+            "0caaa2d943mshd73e0e4af129428p13062bjsn9351c7998dfd",
+          "X-RapidAPI-Host":
+            "currency-conversion-and-exchange-rates.p.rapidapi.com",
+        },
+      }
+    )
       .then((response) => response.json())
       .then((data) => {
         const amount = document.querySelector("#amount").value;
         const foreignCurrency =
           document.querySelector("#foreign_currency").value;
         const rate = data.rates[foreignCurrency];
+
         function convert() {
           return amount * rate;
         }
+
         document.querySelector(
           "#result"
-        ).innerHTML = `${amount} ${base.toUpperCase()} equal to ${foreignCurrency} ${convert().toFixed(
+        ).innerHTML = `${amount} ${base.toUpperCase()} is equal to ${foreignCurrency} ${convert().toFixed(
           4
         )}`;
+      })
+      .catch((error) => {
+        console.log("Error: ", error);
       });
+    return false;
   };
 });
