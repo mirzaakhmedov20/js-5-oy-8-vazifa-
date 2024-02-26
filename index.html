@@ -14,7 +14,7 @@
   </head>
   <body>
     <h2 class="text-center">Currency convertor</h2>
-    <div class="container" style="background-color: black;">
+    <div class="container">
       <div class="convert d-flex  justify-content-around"id="wrapper">
         <p>Amount</p>
         <p>From</p>
@@ -23,18 +23,77 @@
       <form action="">
         <div class="currencies ">
           <input  type="number" id="amount" placeholder="Enter currency" step=".0001">
-          <select name="" id="local_currency">
-            <option value="EUR">EURO</option>
-          </select>
-          <select name="" id="foreign_currency">
-            <option value="USD">US Dollar</option>
-          </select>
+          <select id="from_currency">
+            <option value="EUR">EUR</option>
+            <option value="USD" selected>US dollar</option>
+        </select>
+        <button id="exchange">
+            <i class="fas fa-exchange-alt"></i>
+        </button>
+        <select id="to_currency">
+            <option value="AED">AED</option>
+            <option value="ARS">ARS</option>
+            <option value="AUD">AUD</option>
+            <option value="BGN">BGN</option>
+            <option value="BRL">BRL</option>
+            <option value="BSD">BSD</option>
+            <option value="CAD">CAD</option>
+            <option value="CHF">CHF</option>
+            <option value="CLP">CLP</option>
+            <option value="CNY">CNY</option>
+            <option value="COP">COP</option>
+            <option value="CZK">CZK</option>
+            <option value="DKK">DKK</option>
+            <option value="DOP">DOP</option>
+            <option value="EGP">EGP</option>
+            <option value="EUR" selected>EUR</option>
+            <option value="FJD">FJD</option>
+            <option value="GBP">GBP</option>
+            <option value="GTQ">GTQ</option>
+            <option value="HKD">HKD</option>
+            <option value="HRK">HRK</option>
+            <option value="HUF">HUF</option>
+            <option value="IDR">IDR</option>
+            <option value="ILS">ILS</option>
+            <option value="INR">INR</option>
+            <option value="ISK">ISK</option>
+            <option value="JPY">JPY</option>
+            <option value="KRW">KRW</option>
+            <option value="KZT">KZT</option>
+            <option value="MXN">MXN</option>
+            <option value="MYR">MYR</option>
+            <option value="NOK">NOK</option>
+            <option value="NZD">NZD</option>
+            <option value="PAB">PAB</option>
+            <option value="PEN">PEN</option>
+            <option value="PHP">PHP</option>
+            <option value="PKR">PKR</option>
+            <option value="PLN">PLN</option>
+            <option value="PYG">PYG</option>
+            <option value="RON">RON</option>
+            <option value="RUB">RUB</option>
+            <option value="SAR">SAR</option>
+            <option value="SEK">SEK</option>
+            <option value="SGD">SGD</option>
+            <option value="THB">THB</option>
+            <option value="TRY">TRY</option>
+            <option value="TWD">TWD</option>
+            <option value="UAH">UAH</option>
+            <option value="USD">USD</option>
+        </select>
         </div>
-        <input type="submit" value="Convert">
-        
+        <!-- <input type="submit" value="Convert"> -->
+       
       </form>
-      <div id="result"></div>
-     
+      <!-- <div id="result"></div> -->
+      <p class="exchange">
+          Exchange Rate:
+          <input type="text" id="exchange-rate"></input>
+      </p>
+      <button id="exchange_button">Exchange!</button>
+      <p id="output-text">
+          <span id="from"></span> converted to <span id="to"></span>
+      </p>
     </div>
 
     <script type="module" src="./index.js"></script>
